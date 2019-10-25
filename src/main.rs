@@ -12,6 +12,7 @@ use futures::{
 };
 
 use std::{io, thread};
+use std::io::prelude::*;
 
 
 fn main() {
@@ -42,7 +43,7 @@ fn main() {
                         println!("error");
                         return;
                     }
-                    addr.do_send(client::ClientCommand(cmd));
+                    addr.do_send(client::ClientCommand(cmd.trim().to_string()));
                 });
             })
     }));
